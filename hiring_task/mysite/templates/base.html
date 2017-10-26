@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Shop</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+      <th>Name of the Customer</th>
+      <th># of Orders</th>
+        <th>Total Cost of Orders</th>
+        <th>Manufacturers</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for customer in object_list %}
+    <tr>
+        <td>{{customer.name}}</td>
+        <td>{{customer.orders}}</td>
+        <td>{{customer.total_price}}</td>
+        <td>{{customer.manufacturer}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+from django.views import generic
+from .models import Customer, Order
+from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
+
+
+def index(request):
+    customers_list = list()
+    number_of_orders_list = list()
+    manufacturers_list = list()
+    total_cost_list = list()
+    range_temp = list()
+    total_cost = int()
+    manufacturers = str()
+
+    for customer in Customer.objects.all():
+        orders = Order.objects.filter(Q(name=customer))
+        number_of_orders = orders.count()
+        number_of_orders_list.append(number_of_orders)
+        customers_list.append(customer.name)
+
+        for i in orders:
+            manufacturers += i.manufacturer + ', '
+            total_cost += i.total_price_per_order()
+
+        total_cost_list.append(total_cost)
+        manufacturers_list.append(manufacturers)
+        manufacturers = ''
+        total_cost = 0
+
+    for i in range(len(customers_list)):
+        range_temp.append(i)
+
+    return render(request, 'mysite/order_list.html', {'manufacturers_list': manufacturers_list,
+                                                      'customers_list': customers_list,
+                                                      'number_of_orders_list': number_of_orders_list,
+                                                      'total_cost_list': total_cost_list,
+                                                      'range' : range_temp
+                                                    })
