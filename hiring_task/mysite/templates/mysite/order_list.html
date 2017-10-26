@@ -12,18 +12,25 @@
       <th># of Orders</th>
         <th>Total Cost of Orders</th>
         <th>Manufacturers</th>
+        <th>Refresh</th>
     </tr>
   </thead>
   <tbody>
-  {% for i in range %}
+  {% for a, b, c, d in zipped %}
     <tr>
-        <td>{{customers_list.i}}</td>
-        <td>{{number_of_orders_list.i}}</td>
-        <td>{{total_cost_list.i}}</td>
-        <td>{{manufacturers_list.i}}</td>
+        <td>{{a}}</td>
+        <td>{{b}}</td>
+        <td>{{c}}</td>
+        <td>{{d}}</td>
+        <td><button id=""></button>
+
+</td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
+<script>
+    
+</script>
 </body>
 </html>

@@ -12,8 +12,8 @@ class Customer(models.Model):
     #def total_price_all_order(self):
         #orders_entry = Order.objects.values('name')
 
-    #def __str__(self):
-        #return self.name
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
